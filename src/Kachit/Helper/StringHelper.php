@@ -2,9 +2,8 @@
 /**
  * String helper
  *
- * @author antoxa
- * @package Kachit
- * @subpackage Helpers
+ * @author Kachit
+ * @package Kachit\Helper
  */
 namespace Kachit\Helper;
 

@@ -9,8 +9,8 @@ namespace Kachit\Helper\Tests;
 
 use Kachit\Helper\ArrayHelper;
 
-class ArrayHelperTest extends \PHPUnit_Framework_TestCase
-{
+class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
+
     /**
      * @var ArrayHelper
      */
@@ -20,9 +20,8 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase
         $this->MockObject = new ArrayHelper();
     }
 
-
-    public function testIsArray() {
-        $array = array(1, 2, 3);
+    public function testIsArraySimpleArray() {
+        $array = [1, 2, 3];
         $result = $this->MockObject->isArray($array);
         $this->assertTrue($result);
     }

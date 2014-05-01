@@ -2,23 +2,27 @@
 /**
  * Helpers manager trait
  *
- * @author antoxa
- * @package Kachit
- * @subpackage Helpers
+ * @author Kachit
+ * @package Kachit\Helper
  */
 namespace Kachit\Helper;
 
-trait HelpersManagerTrait
-{
+trait HelpersManagerTrait {
+
     /**
      * @var ArrayHelper
      */
-    private $ArrayHelper;
+    protected $ArrayHelper;
 
     /**
      * @var StringHelper
      */
-    private $StringHelper;
+    protected $StringHelper;
+
+    /**
+     * @var StringHelper
+     */
+    protected $DateTimeHelper;
 
     /**
      * Get string helper
@@ -37,10 +41,22 @@ trait HelpersManagerTrait
      *
      * @return ArrayHelper
      */
-    public function getArrayHelper() {
+    protected function getArrayHelper() {
         if(empty($this->ArrayHelper)) {
             $this->ArrayHelper = new ArrayHelper();
         }
         return $this->ArrayHelper;
+    }
+
+    /**
+     * Get date time helper
+     *
+     * @return DateTimeHelper
+     */
+    protected function getDateTimeHelper() {
+        if(empty($this->DateTimeHelper)) {
+            $this->DateTimeHelper = new DateTimeHelper();
+        }
+        return $this->DateTimeHelper;
     }
 }
