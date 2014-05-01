@@ -1,4 +1,4 @@
-helpers
+helpers library
 =======
 
-helpers for arrays, strings and others.
+helpers library for arrays, strings and others.
