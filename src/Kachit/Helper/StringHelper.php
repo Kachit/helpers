@@ -5,7 +5,6 @@
  * @author antoxa
  * @package Kachit
  * @subpackage Helpers
- * @version 0.1
  */
 namespace Kachit\Helper;
 

@@ -3,8 +3,7 @@
  * Class description
  * 
  * @author antoxa <kornilov@realweb.ru>
- * @package Package name
- * @version 0.1
+ * @package Tests
  */
 namespace Kachit\Helper\Tests;
 
@@ -17,21 +16,18 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase
      */
     private $MockObject;
 
-    protected function setUp()
-    {
+    protected function setUp() {
         $this->MockObject = new ArrayHelper();
     }
 
 
-    public function testIsArray()
-    {
+    public function testIsArray() {
         $array = array(1, 2, 3);
         $result = $this->MockObject->isValidArray($array);
         $this->assertTrue($result);
     }
 
-    public function testIsMultipleArray()
-    {
+    public function testIsMultipleArray() {
         $array = array(
             array(1, 2, 3),
             array(1, 2, 3)
@@ -41,8 +37,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase
     }
 
 
-    public function testExtractFromArray()
-    {
+    public function testExtractFromArray() {
         $array = array(
             'cwer1' => 1,
             'cwer2' => 2,

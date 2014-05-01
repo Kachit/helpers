@@ -5,7 +5,6 @@
  * @author antoxa
  * @package Kachit
  * @subpackage Helpers
- * @version 0.1
  */
 namespace Kachit\Helper;
 
@@ -17,8 +16,7 @@ class ArrayHelper
      * @param bool $keyParam
      * @return array
      */
-    public function arrayColumn(array $array, $valueParam, $keyParam = false)
-    {
+    public function arrayColumn(array $array, $valueParam, $keyParam = false) {
         $data = array();
         if(!empty($array)) {
             foreach($array as $key => $value) {
@@ -36,8 +34,7 @@ class ArrayHelper
      * @param array $array
      * @return bool
      */
-    public function isAssoc(array $array)
-    {
+    public function isAssoc(array $array) {
         $keys = array_keys($array);
         return array_keys($keys) !== $keys;
     }
@@ -46,8 +43,7 @@ class ArrayHelper
      * @param $array
      * @return bool
      */
-    public function isValidArray($array)
-    {
+    public function isValidArray($array) {
         if(!empty($array) && is_array($array)) {
             return true;
         }
@@ -59,8 +55,7 @@ class ArrayHelper
      * @param array $keys
      * @return array
      */
-    public function extractFromArray(array $array, array $keys)
-    {
+    public function extractFromArray(array $array, array $keys) {
         $found = array();
         if(!empty($array) && !empty($keys)) {
             foreach ($keys as $key) {
@@ -77,8 +72,7 @@ class ArrayHelper
      * @param array $keys
      * @return array
      */
-    public function excludeFromArray(array $array, array $keys)
-    {
+    public function excludeFromArray(array $array, array $keys) {
         if(!empty($array) && !empty($keys)) {
             foreach ($keys as $key) {
                 if(isset($array[$key])) {
@@ -93,8 +87,7 @@ class ArrayHelper
      * @param array $array
      * @return bool
      */
-    public function isMultipleArray(array $array)
-    {
+    public function isMultipleArray(array $array) {
         return (count($array) !== count($array, true));
     }
 
@@ -104,8 +97,7 @@ class ArrayHelper
      * @param null $default
      * @return null
      */
-    public function getElement(array $array, $key, $default = null)
-    {
+    public function getElement(array $array, $key, $default = null) {
         return isset($array[$key]) ? $array[$key] : $default;
     }
 }
