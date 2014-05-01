@@ -17,6 +17,9 @@ class ArrayHelper
      * @return array
      */
     public function arrayColumn(array $array, $valueParam, $keyParam = false) {
+        if (PHP_VERSION_ID >= 50400) {
+            return array_column($array, $valueParam, $keyParam);
+        }
         $data = array();
         if(!empty($array)) {
             foreach($array as $key => $value) {
@@ -40,14 +43,15 @@ class ArrayHelper
     }
 
     /**
-     * @param $array
-     * @return bool
+     *
+     * @param mixed $value value to check
+     * @return boolean
      */
-    public function isValidArray($array) {
-        if(!empty($array) && is_array($array)) {
+    public function isArray($value) {
+        if (is_array($value)) {
             return true;
         }
-        return false;
+        return (is_object($value) && $value instanceof \ArrayAccess);
     }
 
     /**
@@ -87,7 +91,7 @@ class ArrayHelper
      * @param array $array
      * @return bool
      */
-    public function isMultipleArray(array $array) {
+    public function isMultiDimensional(array $array) {
         return (count($array) !== count($array, true));
     }
 

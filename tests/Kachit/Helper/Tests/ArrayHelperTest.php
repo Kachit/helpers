@@ -23,7 +23,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase
 
     public function testIsArray() {
         $array = array(1, 2, 3);
-        $result = $this->MockObject->isValidArray($array);
+        $result = $this->MockObject->isArray($array);
         $this->assertTrue($result);
     }
 
@@ -32,7 +32,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase
             array(1, 2, 3),
             array(1, 2, 3)
         );
-        $result = $this->MockObject->isMultipleArray($array);
+        $result = $this->MockObject->isMultiDimensional($array);
         $this->assertTrue($result);
     }
 
