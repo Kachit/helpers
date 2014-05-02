@@ -16,18 +16,17 @@ class JsonHelper {
      * @return bool
      */
     public function isValidJson($string) {
-        json_decode($string);
-        return (json_last_error() == JSON_ERROR_NONE);
+        return $string;
     }
 
     /**
      * encode
      *
-     * @param $value
+     * @param $data
      * @return string
      */
-    public function encode($value) {
-        return json_encode($value);
+    public function encode($data) {
+        return json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     }
 
     /**

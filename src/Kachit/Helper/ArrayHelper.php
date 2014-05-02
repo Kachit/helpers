@@ -7,8 +7,7 @@
  */
 namespace Kachit\Helper;
 
-class ArrayHelper
-{
+class ArrayHelper {
     /**
      * @param $array
      * @param $valueParam
@@ -16,7 +15,7 @@ class ArrayHelper
      * @return array
      */
     public function arrayColumn(array $array, $valueParam, $keyParam = false) {
-        if (PHP_VERSION_ID >= 50400) {
+        if (PHP_VERSION_ID >= 50500) {
             return array_column($array, $valueParam, $keyParam);
         }
         $data = array();

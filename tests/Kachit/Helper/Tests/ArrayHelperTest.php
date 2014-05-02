@@ -1,9 +1,9 @@
 <?php
 /**
- * Class description
+ * Array helper test
  * 
- * @author antoxa <kornilov@realweb.ru>
- * @package Tests
+ * @author Kachit
+ * @package Kachit\Helper\Tests
  */
 namespace Kachit\Helper\Tests;
 
@@ -26,61 +26,64 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertTrue($result);
     }
 
+    public function testIsArrayBad() {
+        $bad = 'foo';
+        $result = $this->MockObject->isArray($bad);
+        $this->assertFalse($result);
+    }
+
     public function testIsMultipleArray() {
-        $array = array(
-            array(1, 2, 3),
-            array(1, 2, 3)
-        );
+        $array = [
+            [1, 2, 3],
+            [1, 2, 3],
+        ];
         $result = $this->MockObject->isMultiDimensional($array);
         $this->assertTrue($result);
     }
 
-
     public function testExtractFromArray() {
-        $array = array(
+        $array = [
             'cwer1' => 1,
             'cwer2' => 2,
             'cwer3' => 3,
             'cwer4' => 4,
             'cwer5' => 5,
-        );
+        ];
 
-        $expected = array(
+        $expected = [
             'cwer1' => 1,
             'cwer2' => 2,
             'cwer3' => 3,
-        );
+        ];
 
-        $result = $this->MockObject->extractFromArray($array, array('cwer1', 'cwer2', 'cwer3'));
+        $result = $this->MockObject->extractFromArray($array, ['cwer1', 'cwer2', 'cwer3']);
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
         $this->assertTrue(($result === $expected));
     }
 
-    public function testExcludeFromArray()
-    {
-        $array = array(
+    public function testExcludeFromArray() {
+        $array = [
             'cwer1' => 1,
             'cwer2' => 2,
             'cwer3' => 3,
             'cwer4' => 4,
             'cwer5' => 5,
-        );
+        ];
 
-        $expected = array(
+        $expected = [
             'cwer1' => 1,
             'cwer2' => 2,
             'cwer3' => 3,
-        );
+        ];
 
-        $result = $this->MockObject->excludeFromArray($array, array('cwer4', 'cwer5'));
+        $result = $this->MockObject->excludeFromArray($array, ['cwer4', 'cwer5']);
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
         $this->assertTrue(($result === $expected));
     }
 
-    public function testGetElementIssetKey()
-    {
+    public function testGetElementIssetKey() {
         $array = array(
             'cwer1' => 'qwerty',
             'cwer2' => 2,
@@ -95,16 +98,14 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
 
     }
 
-
-    public function testGetElementNotIssetKey()
-    {
-        $array = array(
+    public function testGetElementNotIssetKey() {
+        $array = [
             'cwer1' => 'qwerty',
             'cwer2' => 2,
             'cwer3' => 3,
             'cwer4' => 4,
             'cwer5' => 5,
-        );
+        ];
 
         $result = $this->MockObject->getElement($array, 'cwer6', 'qwerty');
         $this->assertNotEmpty($result);
@@ -113,25 +114,24 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
     }
 
 
-    public function testArrayColumnValue()
-    {
-        $array = array(
-            array(
+    public function testArrayColumnValue() {
+        $array = [
+            [
                 'cwer1' => 'qwerty1',
                 'cwer2' => 1,
                 'cwer3' => 3,
                 'cwer4' => 4,
                 'cwer5' => 5,
-            ),
+            ],
 
-            array(
+            [
                 'cwer1' => 'qwerty2',
                 'cwer2' => 2,
                 'cwer3' => 3,
                 'cwer4' => 4,
                 'cwer5' => 5,
-            )
-        );
+            ]
+        ];
         $result = $this->MockObject->arrayColumn($array, 'cwer1');
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
@@ -140,25 +140,24 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
     }
 
 
-    public function testArrayColumnKeyValue()
-    {
-        $array = array(
-            array(
+    public function testArrayColumnKeyValue() {
+        $array = [
+            [
                 'cwer1' => 'qwerty1',
                 'cwer2' => 'foo',
                 'cwer3' => 3,
                 'cwer4' => 4,
                 'cwer5' => 5,
-            ),
+            ],
 
-            array(
+            [
                 'cwer1' => 'qwerty2',
                 'cwer2' => 'bar',
                 'cwer3' => 3,
                 'cwer4' => 4,
                 'cwer5' => 5,
-            )
-        );
+            ],
+        ];
         $result = $this->MockObject->arrayColumn($array, 'cwer1', 'cwer2');
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
@@ -168,22 +167,20 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('qwerty2', $result['bar']);
     }
 
-    public function testArrayIsAssocIsTrue()
-    {
-        $array = array(
+    public function testArrayIsAssocIsTrue() {
+        $array = [
             'cwer1' => 'qwerty',
             'cwer2' => 2,
             'cwer3' => 3,
             'cwer4' => 4,
             'cwer5' => 5,
-        );
+        ];
         $result = $this->MockObject->isAssoc($array);
         $this->assertTrue($result);
     }
 
-    public function testArrayIsAssocIsFalse()
-    {
-        $array = array(1, 2, 3);
+    public function testArrayIsAssocIsFalse() {
+        $array = [1, 2, 3];
         $result = $this->MockObject->isAssoc($array);
         $this->assertFalse($result);
     }

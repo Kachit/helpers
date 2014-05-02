@@ -1,10 +1,9 @@
 <?php
 /**
- * Class description
- * 
- * @author antoxa <kornilov@realweb.ru>
- * @package Package name
- * @version 0.1
+ * String helper test
+ *
+ * @author Kachit
+ * @package Kachit\Helper\Tests
  */
 namespace Kachit\Helper\Tests;
 
