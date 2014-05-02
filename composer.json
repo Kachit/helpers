@@ -1,0 +1,28 @@
+{
+    "name": "kachit/helpers",
+    "require": {
+        "php": ">=5.4.0"
+    },
+    "description": "Utils classes for arrays, strings and other",
+    "version": "1.0.0",
+    "keywords": ["Array", "Helper", "Utils"],
+    "support": {
+        "email": "kachit@yandex.ru",
+        "source": "https://github.com/Kachit/helpers"
+    },
+    "autoload": {
+        "psr-0": {
+            "Kachit\\Helper": "src/"
+        }
+    },
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kachit",
+            "email": "kachit@yandex.ru",
+            "homepage": "https://github.com/kachit/",
+            "role": "Developer"
+        }
+    ]
+}
