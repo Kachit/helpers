@@ -8,13 +8,16 @@
 namespace Kachit\Helper;
 
 class ArrayHelper {
+
     /**
-     * @param $array
-     * @param $valueParam
-     * @param bool $keyParam
+     * Fetch single dimensional array from multi dimensional array
+     *
+     * @param array $array
+     * @param string $valueParam
+     * @param string $keyParam
      * @return array
      */
-    public function arrayColumn(array $array, $valueParam, $keyParam = false) {
+    public function arrayColumn(array $array, $valueParam, $keyParam = null) {
         if (PHP_VERSION_ID >= 50500) {
             return array_column($array, $valueParam, $keyParam);
         }
@@ -32,6 +35,8 @@ class ArrayHelper {
     }
 
     /**
+     * Check is assoc array
+     *
      * @param array $array
      * @return bool
      */
@@ -41,6 +46,7 @@ class ArrayHelper {
     }
 
     /**
+     * Check is array
      *
      * @param mixed $value value to check
      * @return boolean
@@ -53,6 +59,8 @@ class ArrayHelper {
     }
 
     /**
+     * Extract values list from array
+     *
      * @param array $array
      * @param array $keys
      * @return array
@@ -70,6 +78,8 @@ class ArrayHelper {
     }
 
     /**
+     * Extract from array with exclude
+     *
      * @param array $array
      * @param array $keys
      * @return array
@@ -86,6 +96,8 @@ class ArrayHelper {
     }
 
     /**
+     * Check is multi dimensional array
+     *
      * @param array $array
      * @return bool
      */
@@ -94,10 +106,12 @@ class ArrayHelper {
     }
 
     /**
+     * Get element from array
+     *
      * @param array $array
-     * @param $key
-     * @param null $default
-     * @return null
+     * @param string $key
+     * @param string $default
+     * @return mixed
      */
     public function getElement(array $array, $key, $default = null) {
         return isset($array[$key]) ? $array[$key] : $default;

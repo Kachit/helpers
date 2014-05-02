@@ -10,6 +10,8 @@ namespace Kachit\Helper;
 class StringHelper {
 
     /**
+     * Convert string to camelCase
+     *
      * @param string $string
      * @param bool $lcfirst
      * @return string
@@ -20,6 +22,8 @@ class StringHelper {
     }
 
     /**
+     * Convert string to under_score
+     *
      * @param string $word
      * @return string
      */
