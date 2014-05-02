@@ -20,7 +20,7 @@ class JsonHelper {
     }
 
     /**
-     * encode
+     * Encode
      *
      * @param $data
      * @return string
@@ -30,7 +30,7 @@ class JsonHelper {
     }
 
     /**
-     * decode
+     * Decode
      *
      * @param $jsonString
      * @return mixed
