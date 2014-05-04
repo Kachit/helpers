@@ -26,13 +26,16 @@ class JsonHelper {
      * @return string
      */
     public function encode($data) {
+        if (!is_array($data) || !is_object($data)) {
+            return false;
+        }
         return json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     }
 
     /**
      * Decode
      *
-     * @param $jsonString
+     * @param string $jsonString
      * @return mixed
      */
     public function decode($jsonString) {
