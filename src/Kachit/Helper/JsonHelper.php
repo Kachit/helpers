@@ -13,6 +13,7 @@ class JsonHelper {
      * Validate json
      *
      * @param $string
+     * @todo
      * @return bool
      */
     public function isValidJson($string) {
@@ -36,6 +37,7 @@ class JsonHelper {
      * Decode
      *
      * @param string $jsonString
+     * @todo
      * @return mixed
      */
     public function decode($jsonString) {

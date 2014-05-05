@@ -5,7 +5,6 @@
  * @author Kachit
  * @package Kachit\Helper
  */
-
 namespace Kachit\Helper;
 
 class DateTimeHelper {
