@@ -36,7 +36,7 @@ class JsonHelper {
     }
 
     /**
-     * Decode
+     * Decode data from json
      *
      * @param string $jsonString
      * @todo
