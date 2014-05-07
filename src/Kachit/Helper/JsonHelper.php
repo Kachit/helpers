@@ -23,7 +23,7 @@ class JsonHelper {
     }
 
     /**
-     * Encode
+     * Encode data to json
      *
      * @param array|object $data
      * @return string
