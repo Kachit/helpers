@@ -1,6 +1,6 @@
 <?php
 /**
- * DateTimeHelper
+ * Helper for works with date and time
  *
  * @author Kachit
  * @package Kachit\Helper
