@@ -12,18 +12,20 @@ class JsonHelper {
     /**
      * Validate json
      *
-     * @param $string
-     * @todo
+     * @param string $value
      * @return bool
      */
-    public function isValidJson($string) {
-        return $string;
+    public function isValidJson($value) {
+        if (!is_string($value)) {
+            return false;
+        }
+        return true;
     }
 
     /**
      * Encode
      *
-     * @param $data
+     * @param array|object $data
      * @return string
      */
     public function encode($data) {
@@ -38,7 +40,7 @@ class JsonHelper {
      *
      * @param string $jsonString
      * @todo
-     * @return mixed
+     * @return array|object
      */
     public function decode($jsonString) {
         return json_decode($jsonString);
