@@ -184,16 +184,4 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
         $result = $this->Testable->isAssoc($array);
         $this->assertFalse($result);
     }
-
-    public function testConvertByPattern(){
-        $array = [
-            'id' => 1,
-            'name' => 2,
-            'status' => 3,
-            'description' => 4,
-        ];
-        $pattern = ['id', 'name', 'status'];
-        $result = $this->Testable->convertByPattern($array, $pattern);
-        var_dump($result);
-    }
 }

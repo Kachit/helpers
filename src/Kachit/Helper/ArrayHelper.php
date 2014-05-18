@@ -116,17 +116,4 @@ class ArrayHelper {
     public function getElement(array $array, $key, $default = null) {
         return (isset($array[$key])) ? $array[$key] : $default;
     }
-
-    /**
-     * Convert by pattern
-     *
-     * @param array $array
-     * @param array $patternArray
-     * @return array
-     */
-    public function convertByPattern(array $array, array $patternArray) {
-        $patternArray = array_flip($patternArray);
-        array_walk($patternArray, function(&$element){ $element = '';});
-        return array_merge($patternArray, $array);
-    }
 }
