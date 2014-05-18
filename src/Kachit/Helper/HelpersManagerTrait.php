@@ -12,5 +12,4 @@ trait HelpersManagerTrait {
     use ArrayHelperTrait;
     use StringHelperTrait;
     use DateTimeHelperTrait;
-    use JsonHelperTrait;
 }

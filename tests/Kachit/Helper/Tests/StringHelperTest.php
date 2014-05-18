@@ -16,6 +16,9 @@ class StringHelperTest extends \PHPUnit_Framework_TestCase {
      */
     private $MockObject;
 
+    /**
+     * Init
+     */
     protected function setUp() {
         $this->MockObject = new StringHelper();
     }
@@ -36,5 +39,13 @@ class StringHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertNotEmpty($result);
         $this->assertTrue(is_string($result));
         $this->assertEquals('string_helper_test', $result);
+    }
+
+    public function testLimitWords() {
+        $text = 'Apply a user function to every member of an array';
+        $result = $this->MockObject->limitWords($text, 5);
+        $this->assertNotEmpty($result);
+        $this->assertTrue(is_string($result));
+        $this->assertEquals('Apply a user function to...', $result);
     }
 }

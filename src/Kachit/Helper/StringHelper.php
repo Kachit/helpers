@@ -35,4 +35,22 @@ class StringHelper {
         $word = strtolower($word);
         return $word;
     }
+
+    /**
+     * limitWords
+     *
+     * @param string $text
+     * @param int $limitWords
+     * @param string $suffix
+     * @return string
+     */
+    public function limitWords($text, $limitWords = 50, $suffix = '...') {
+        $textArray = explode(' ', $text);
+        $count = count($textArray);
+        if ($count > $limitWords) {
+            $result = array_slice($textArray, 0, $limitWords);
+            $text = implode(' ', $result) . $suffix;
+        }
+        return $text;
+    }
 }

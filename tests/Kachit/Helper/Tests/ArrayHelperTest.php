@@ -14,21 +14,21 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
     /**
      * @var ArrayHelper
      */
-    private $MockObject;
+    private $Testable;
 
     protected function setUp() {
-        $this->MockObject = new ArrayHelper();
+        $this->Testable = new ArrayHelper();
     }
 
     public function testIsArraySimpleArray() {
         $array = [1, 2, 3];
-        $result = $this->MockObject->isArray($array);
+        $result = $this->Testable->isArray($array);
         $this->assertTrue($result);
     }
 
     public function testIsArrayBad() {
         $bad = 'foo';
-        $result = $this->MockObject->isArray($bad);
+        $result = $this->Testable->isArray($bad);
         $this->assertFalse($result);
     }
 
@@ -37,7 +37,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
             [1, 2, 3],
             [1, 2, 3],
         ];
-        $result = $this->MockObject->isMultiDimensional($array);
+        $result = $this->Testable->isMultiDimensional($array);
         $this->assertTrue($result);
     }
 
@@ -56,7 +56,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
             'cwer3' => 3,
         ];
 
-        $result = $this->MockObject->extractFromArray($array, ['cwer1', 'cwer2', 'cwer3']);
+        $result = $this->Testable->extractFromArray($array, ['cwer1', 'cwer2', 'cwer3']);
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
         $this->assertTrue(($result === $expected));
@@ -77,7 +77,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
             'cwer3' => 3,
         ];
 
-        $result = $this->MockObject->excludeFromArray($array, ['cwer4', 'cwer5']);
+        $result = $this->Testable->excludeFromArray($array, ['cwer4', 'cwer5']);
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
         $this->assertTrue(($result === $expected));
@@ -91,7 +91,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
             'cwer4' => 4,
             'cwer5' => 5,
         );
-        $result = $this->MockObject->getElement($array, 'cwer1');
+        $result = $this->Testable->getElement($array, 'cwer1');
         $this->assertNotEmpty($result);
         $this->assertTrue(is_string($result));
         $this->assertEquals('qwerty', $result);
@@ -107,7 +107,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
             'cwer5' => 5,
         ];
 
-        $result = $this->MockObject->getElement($array, 'cwer6', 'qwerty');
+        $result = $this->Testable->getElement($array, 'cwer6', 'qwerty');
         $this->assertNotEmpty($result);
         $this->assertTrue(is_string($result));
         $this->assertEquals('qwerty', $result);
@@ -132,7 +132,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
                 'cwer5' => 5,
             ]
         ];
-        $result = $this->MockObject->arrayColumn($array, 'cwer1');
+        $result = $this->Testable->arrayColumn($array, 'cwer1');
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
         $this->assertEquals('qwerty1', $result[0]);
@@ -158,7 +158,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
                 'cwer5' => 5,
             ],
         ];
-        $result = $this->MockObject->arrayColumn($array, 'cwer1', 'cwer2');
+        $result = $this->Testable->arrayColumn($array, 'cwer1', 'cwer2');
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
         $this->assertArrayHasKey('foo', $result);
@@ -175,13 +175,25 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
             'cwer4' => 4,
             'cwer5' => 5,
         ];
-        $result = $this->MockObject->isAssoc($array);
+        $result = $this->Testable->isAssoc($array);
         $this->assertTrue($result);
     }
 
     public function testArrayIsAssocIsFalse() {
         $array = [1, 2, 3];
-        $result = $this->MockObject->isAssoc($array);
+        $result = $this->Testable->isAssoc($array);
         $this->assertFalse($result);
+    }
+
+    public function testConvertByPattern(){
+        $array = [
+            'id' => 1,
+            'name' => 2,
+            'status' => 3,
+            'description' => 4,
+        ];
+        $pattern = ['id', 'name', 'status'];
+        $result = $this->Testable->convertByPattern($array, $pattern);
+        var_dump($result);
     }
 }
