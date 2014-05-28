@@ -116,4 +116,15 @@ class ArrayHelper {
     public function getElement(array $array, $key, $default = null) {
         return (isset($array[$key])) ? $array[$key] : $default;
     }
+
+    /**
+     * Clear array
+     *
+     * @param array $array
+     * @param array $symbols
+     * @return array
+     */
+    public function arrayClear(array $array, array $symbols = ['', null]) {
+        return array_diff($array, $symbols);
+    }
 }
