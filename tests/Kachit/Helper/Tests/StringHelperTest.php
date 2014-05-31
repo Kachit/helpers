@@ -23,6 +23,9 @@ class StringHelperTest extends \PHPUnit_Framework_TestCase {
         $this->MockObject = new StringHelper();
     }
 
+    /**
+     * RTFN
+     */
     public function testConvertToCamelCase() {
         $table_name = 'table_name';
         $result = $this->MockObject->convertToCamelCase($table_name);
@@ -33,6 +36,9 @@ class StringHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('TableName', $result);
     }
 
+    /**
+     * RTFN
+     */
     public function testConvertToUnderscore() {
         $test = 'StringHelperTest';
         $result = $this->MockObject->convertToUnderscore($test);
@@ -41,6 +47,9 @@ class StringHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('string_helper_test', $result);
     }
 
+    /**
+     * RTFN
+     */
     public function testLimitWords() {
         $text = 'Apply a user function to every member of an array';
         $result = $this->MockObject->limitWords($text, 5);

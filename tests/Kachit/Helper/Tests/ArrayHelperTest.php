@@ -16,22 +16,34 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
      */
     private $Testable;
 
+    /**
+     * Init
+     */
     protected function setUp() {
         $this->Testable = new ArrayHelper();
     }
 
+    /**
+     * RTFN
+     */
     public function testIsArraySimpleArray() {
         $array = [1, 2, 3];
         $result = $this->Testable->isArray($array);
         $this->assertTrue($result);
     }
 
+    /**
+     * RTFN
+     */
     public function testIsArrayBad() {
         $bad = 'foo';
         $result = $this->Testable->isArray($bad);
         $this->assertFalse($result);
     }
 
+    /**
+     * RTFN
+     */
     public function testIsMultipleArray() {
         $array = [
             [1, 2, 3],
@@ -41,6 +53,9 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertTrue($result);
     }
 
+    /**
+     * RTFN
+     */
     public function testExtractFromArray() {
         $array = [
             'cwer1' => 1,
@@ -62,6 +77,9 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertTrue(($result === $expected));
     }
 
+    /**
+     * RTFN
+     */
     public function testExcludeFromArray() {
         $array = [
             'cwer1' => 1,
@@ -83,6 +101,9 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertTrue(($result === $expected));
     }
 
+    /**
+     * RTFN
+     */
     public function testGetElementIssetKey() {
         $array = array(
             'cwer1' => 'qwerty',
@@ -98,6 +119,9 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
 
     }
 
+    /**
+     * RTFN
+     */
     public function testGetElementNotIssetKey() {
         $array = [
             'cwer1' => 'qwerty',
@@ -113,7 +137,9 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('qwerty', $result);
     }
 
-
+    /**
+     * RTFN
+     */
     public function testArrayColumnValue() {
         $array = [
             [
@@ -139,7 +165,9 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('qwerty2', $result[1]);
     }
 
-
+    /**
+     * RTFN
+     */
     public function testArrayColumnKeyValue() {
         $array = [
             [
@@ -167,6 +195,9 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('qwerty2', $result['bar']);
     }
 
+    /**
+     * RTFN
+     */
     public function testArrayIsAssocIsTrue() {
         $array = [
             'cwer1' => 'qwerty',
@@ -179,9 +210,33 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertTrue($result);
     }
 
+    /**
+     * RTFN
+     */
     public function testArrayIsAssocIsFalse() {
         $array = [1, 2, 3];
         $result = $this->Testable->isAssoc($array);
         $this->assertFalse($result);
+    }
+
+    /**
+     * RTFN
+     */
+    public function testClearArray() {
+        $array = ['foo' => 1, null, 'bar' => 2, 'boo' => ''];
+        $result = $this->Testable->arrayClear($array);
+        $this->assertEquals(2, count($result));
+        $this->assertArrayNotHasKey('boo', $result);
+    }
+
+    /**
+     * RTFN
+     */
+    public function testClearArrayWithCustomFilter() {
+        $array = ['foo' => 1, 'bar' => 2, 'boo' => ''];
+        $filter = [1, 2];
+        $result = $this->Testable->arrayClear($array, $filter);
+        $this->assertEquals(1, count($result));
+        $this->assertArrayHasKey('boo', $result);
     }
 }

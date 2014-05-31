@@ -121,10 +121,10 @@ class ArrayHelper {
      * Clear array
      *
      * @param array $array
-     * @param array $symbols
+     * @param array $filter
      * @return array
      */
-    public function arrayClear(array $array, array $symbols = ['', null]) {
-        return array_diff($array, $symbols);
+    public function arrayClear(array $array, array $filter = ['', null]) {
+        return array_diff($array, $filter);
     }
 }
