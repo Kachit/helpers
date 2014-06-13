@@ -40,7 +40,7 @@ class ArrayHelper {
      * @param array $array
      * @return bool
      */
-    public function isAssoc(array $array) {
+    public function isAssoc(array &$array) {
         $keys = array_keys($array);
         return array_keys($keys) !== $keys;
     }
@@ -101,7 +101,7 @@ class ArrayHelper {
      * @param array $array
      * @return bool
      */
-    public function isMultiDimensional(array $array) {
+    public function isMultiDimensional(array &$array) {
         return (count($array) !== count($array, true));
     }
 
@@ -113,7 +113,7 @@ class ArrayHelper {
      * @param string $default
      * @return mixed
      */
-    public function getElement(array $array, $key, $default = null) {
+    public function getElement(array &$array, $key, $default = null) {
         return (isset($array[$key])) ? $array[$key] : $default;
     }
 
