@@ -239,4 +239,68 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals(1, count($result));
         $this->assertArrayHasKey('boo', $result);
     }
+
+    /**
+     * RTFN
+     */
+    public function testInsertAfterAddByKey(){
+        $test = ['id' => 1, 'name' => 'John', 'age' => 20, ];
+        $result = $this->Testable->arrayInsert($test, 'name', ['lastName' => 'Smith']);
+        $this->assertNotEmpty($result);
+        $this->assertTrue(is_array($result));
+        $this->assertArrayHasKey('lastName', $result);
+        $this->assertEquals(4, count($result));
+        array_pop($result);
+        $this->assertEquals('Smith', array_pop($result));
+    }
+
+    /**
+     * RTFN
+     */
+    public function testInsertAfterAddByIndex() {
+        $test = [1, 2, 3, 5];
+        $expected = [1, 2, 3, 4, 5];
+        $result = $this->Testable->insertAfter($test, 2, [4]);
+        $this->assertNotEmpty($result);
+        $this->assertTrue(is_array($result));
+        $this->assertEquals(5, count($result));
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * RTFN
+     */
+    public function testInsertBeforeAddByIndex() {
+        $test = [1, 3, 4, 5];
+        $expected = [1, 2, 3, 4, 5];
+        $result = $this->Testable->arrayInsert($test, 1, [2], 'before');
+        $this->assertNotEmpty($result);
+        $this->assertTrue(is_array($result));
+        $this->assertEquals(5, count($result));
+        $this->assertEquals($expected, $result);
+    }
+
+    /**
+     * RTFN
+     */
+    public function testInsertBeforeAddByKey() {
+        $test = ['name' => 'John', 'age' => 20, ];
+        $result = $this->Testable->insertBefore($test, 'name', ['id' => 1]);
+        $this->assertNotEmpty($result);
+        $this->assertTrue(is_array($result));
+        $this->assertEquals(3, count($result));
+        $this->assertEquals(1, array_shift($result));
+    }
+
+    /**
+     * RTFN
+     */
+    public function testInsertAfterWithUnavailableKey() {
+        $test = ['id' => 1, 'name' => 'John', 'age' => 20, ];
+        $result = $this->Testable->insertAfter($test, 'email', ['active' => 1]);
+        $this->assertNotEmpty($result);
+        $this->assertTrue(is_array($result));
+        $this->assertEquals(4, count($result));
+        $this->assertEquals(1, array_pop($result));
+    }
 }

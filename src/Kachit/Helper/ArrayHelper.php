@@ -9,6 +9,9 @@ namespace Kachit\Helper;
 
 class ArrayHelper {
 
+    const INSERT_TYPE_AFTER = 'after';
+    const INSERT_TYPE_BEFORE = 'before';
+
     /**
      * Fetch single dimensional array from multi dimensional array
      *
@@ -126,5 +129,57 @@ class ArrayHelper {
      */
     public function arrayClear(array $array, array $filter = ['', null]) {
         return array_diff($array, $filter);
+    }
+
+    /**
+     * Insert after
+     *
+     * @param array $array
+     * @param array $insert
+     * @param mixed $key
+     * @param string $position
+     * @return array
+     */
+    public function arrayInsert(array $array, $key, array $insert, $position = self::INSERT_TYPE_AFTER) {
+        if (!in_array($position, [self::INSERT_TYPE_AFTER, self::INSERT_TYPE_BEFORE])) {
+            return false;
+        }
+        $keyPosition = array_search($key, array_keys($array));
+        if (self::INSERT_TYPE_AFTER == $position) {
+            $keyPosition++;
+        }
+
+        if (false !== $keyPosition ) {
+            $result = array_slice($array, 0, $keyPosition);
+            $result = array_merge($result, $insert);
+            $result = array_merge($result, array_slice($array, $keyPosition));
+        } else {
+            $result = array_merge($array, $insert);
+        }
+        return $result;
+    }
+
+    /**
+     * Insert after
+     *
+     * @param array $array
+     * @param $key
+     * @param array $insert
+     * @return array
+     */
+    public function insertAfter(array $array, $key, array $insert) {
+        return $this->arrayInsert($array, $key, $insert);
+    }
+
+    /**
+     * Insert before
+     *
+     * @param array $array
+     * @param $key
+     * @param array $insert
+     * @return array
+     */
+    public function insertBefore(array $array, $key, array $insert) {
+        return $this->arrayInsert($array, $key, $insert, self::INSERT_TYPE_BEFORE);
     }
 }
