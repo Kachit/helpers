@@ -117,7 +117,7 @@ class ArrayHelper {
      * @return mixed
      */
     public function getElement(array &$array, $key, $default = null) {
-        return (isset($array[$key])) ? $array[$key] : $default;
+        return (isset($array[$key]) || array_key_exists($key, $array)) ? $array[$key] : $default;
     }
 
     /**
