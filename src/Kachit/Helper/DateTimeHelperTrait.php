@@ -1,6 +1,6 @@
 <?php
 /**
- * DateTimeHelper
+ * DateTime helper trait
  *
  * @author Kachit
  * @package Kachit\Helper

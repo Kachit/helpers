@@ -1,6 +1,6 @@
 <?php
 /**
- * StringHelperTrait
+ * String helper trait
  *
  * @author Kachit
  * @package Kachit\Helper
