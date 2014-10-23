@@ -1,6 +1,6 @@
 <?php
 /**
- * String helper test
+ * Json helper test
  *
  * @author Kachit
  * @package Kachit\Helper\Tests
@@ -17,13 +17,32 @@ class JsonHelperTest extends \PHPUnit_Framework_TestCase {
     private $MockObject;
 
     /**
+     * @var
+     */
+    private $expectedOptionsEncode;
+
+    /**
      * Init
      */
     protected function setUp() {
         $this->MockObject = new JsonHelper();
+        $this->expectedOptionsEncode = JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
     }
 
-    public function test() {
-        var_dump($this->MockObject);
+    /**
+     * RTFN
+     */
+    public function testGenerateOptionsEncodeDefault() {
+        $this->assertEquals($this->expectedOptionsEncode, $this->MockObject->generateEncodeOptions());
+    }
+
+    /**
+     * RTFN
+     */
+    public function testEncodeByDefault() {
+        $data = ['foo' => 123, 'bar' => 456, 'fi' => []];
+        $jsonExpected = json_encode($data, $this->expectedOptionsEncode);
+        $jsonActual = json_encode($data, $this->MockObject->generateEncodeOptions());
+        $this->assertEquals($jsonExpected, $jsonActual);
     }
 }
