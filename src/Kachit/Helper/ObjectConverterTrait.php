@@ -26,7 +26,7 @@ trait ObjectConverterTrait {
     public function fillFromArray(array $params) {
         $expectedParams = $this->toArray();
         foreach ($expectedParams as $key => $value) {
-            $this->$key = (isset($params[$key])) ? $params[$key] : $value;
+            $this->$key = (array_key_exists($key, $params)) ? $params[$key] : $value;
         }
         return $this;
     }

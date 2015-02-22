@@ -13,14 +13,22 @@ class ArrayHelper {
     const INSERT_TYPE_BEFORE = 'before';
 
     /**
-     * Fetch single dimensional array from multi dimensional array
+     * @var array
+     */
+    protected $insertTypes = [
+        self::INSERT_TYPE_AFTER,
+        self::INSERT_TYPE_BEFORE,
+    ];
+
+    /**
+     * Fetch single dimensional array from multi dimensional array (array_column analog)
      *
      * @param array $array
      * @param string $valueParam
      * @param string $keyParam
      * @return array
      */
-    public function arrayColumn(array $array, $valueParam, $keyParam = null) {
+    public function flatten(array $array, $valueParam, $keyParam = null) {
         if (PHP_VERSION_ID >= 50500) {
             return array_column($array, $valueParam, $keyParam);
         }
@@ -62,17 +70,44 @@ class ArrayHelper {
     }
 
     /**
+     * Check for key exists
+     *
+     * @param array $array
+     * @param mixed $key
+     * @return bool
+     */
+    public function keyExist(array $array, $key) {
+        return array_key_exists($key, $array);
+    }
+
+    /**
+     * Delete element from array
+     *
+     * @param array $array
+     * @param $key
+     * @return bool
+     */
+    public function delete(array &$array, $key) {
+        $result = false;
+        if ($this->keyExist($array, $key)) {
+            unset($array[$key]);
+            $result = true;
+        }
+        return $result;
+    }
+
+    /**
      * Extract values list from array
      *
      * @param array $array
      * @param array $keys
      * @return array
      */
-    public function extractFromArray(array $array, array $keys) {
-        $found = array();
-        if(!empty($array) && !empty($keys)) {
+    public function extract(array $array, array $keys) {
+        $found = [];
+        if($array && $keys) {
             foreach ($keys as $key) {
-                if (isset($array[$key])) {
+                if ($this->keyExist($array, $key)) {
                     $found[$key] = $array[$key];
                 }
             }
@@ -87,12 +122,10 @@ class ArrayHelper {
      * @param array $keys
      * @return array
      */
-    public function excludeFromArray(array $array, array $keys) {
-        if(!empty($array) && !empty($keys)) {
+    public function exclude(array $array, array $keys) {
+        if($array && $keys) {
             foreach ($keys as $key) {
-                if(isset($array[$key])) {
-                    unset ($array[$key]);
-                }
+                $this->delete($array, $key);
             }
         }
         return $array;
@@ -117,17 +150,17 @@ class ArrayHelper {
      * @return mixed
      */
     public function getElement(array &$array, $key, $default = null) {
-        return (isset($array[$key]) || array_key_exists($key, $array)) ? $array[$key] : $default;
+        return (array_key_exists($key, $array)) ? $array[$key] : $default;
     }
 
     /**
-     * Clear array
+     * Clear array by filter
      *
      * @param array $array
      * @param array $filter
      * @return array
      */
-    public function arrayClear(array $array, array $filter = ['', null]) {
+    public function clear(array $array, array $filter = ['', null]) {
         return array_diff($array, $filter);
     }
 
@@ -140,8 +173,8 @@ class ArrayHelper {
      * @param string $position
      * @return array
      */
-    public function arrayInsert(array $array, $key, array $insert, $position = self::INSERT_TYPE_AFTER) {
-        if (!in_array($position, [self::INSERT_TYPE_AFTER, self::INSERT_TYPE_BEFORE])) {
+    public function insert(array $array, $key, array $insert, $position = self::INSERT_TYPE_AFTER) {
+        if (!in_array($position, $this->insertTypes)) {
             return false;
         }
         $keyPosition = array_search($key, array_keys($array));
@@ -163,23 +196,23 @@ class ArrayHelper {
      * Insert after
      *
      * @param array $array
-     * @param $key
+     * @param mixed $key
      * @param array $insert
      * @return array
      */
     public function insertAfter(array $array, $key, array $insert) {
-        return $this->arrayInsert($array, $key, $insert);
+        return $this->insert($array, $key, $insert);
     }
 
     /**
      * Insert before
      *
      * @param array $array
-     * @param $key
+     * @param mixed $key
      * @param array $insert
      * @return array
      */
     public function insertBefore(array $array, $key, array $insert) {
-        return $this->arrayInsert($array, $key, $insert, self::INSERT_TYPE_BEFORE);
+        return $this->insert($array, $key, $insert, self::INSERT_TYPE_BEFORE);
     }
 }

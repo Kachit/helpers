@@ -71,7 +71,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
             'cwer3' => 3,
         ];
 
-        $result = $this->Testable->extractFromArray($array, ['cwer1', 'cwer2', 'cwer3']);
+        $result = $this->Testable->extract($array, ['cwer1', 'cwer2', 'cwer3']);
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
         $this->assertTrue(($result === $expected));
@@ -95,7 +95,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
             'cwer3' => 3,
         ];
 
-        $result = $this->Testable->excludeFromArray($array, ['cwer4', 'cwer5']);
+        $result = $this->Testable->exclude($array, ['cwer4', 'cwer5']);
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
         $this->assertTrue(($result === $expected));
@@ -158,7 +158,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
                 'cwer5' => 5,
             ]
         ];
-        $result = $this->Testable->arrayColumn($array, 'cwer1');
+        $result = $this->Testable->flatten($array, 'cwer1');
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
         $this->assertEquals('qwerty1', $result[0]);
@@ -186,7 +186,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
                 'cwer5' => 5,
             ],
         ];
-        $result = $this->Testable->arrayColumn($array, 'cwer1', 'cwer2');
+        $result = $this->Testable->flatten($array, 'cwer1', 'cwer2');
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
         $this->assertArrayHasKey('foo', $result);
@@ -224,7 +224,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
      */
     public function testClearArray() {
         $array = ['foo' => 1, null, 'bar' => 2, 'boo' => ''];
-        $result = $this->Testable->arrayClear($array);
+        $result = $this->Testable->clear($array);
         $this->assertEquals(2, count($result));
         $this->assertArrayNotHasKey('boo', $result);
     }
@@ -235,7 +235,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
     public function testClearArrayWithCustomFilter() {
         $array = ['foo' => 1, 'bar' => 2, 'boo' => ''];
         $filter = [1, 2];
-        $result = $this->Testable->arrayClear($array, $filter);
+        $result = $this->Testable->clear($array, $filter);
         $this->assertEquals(1, count($result));
         $this->assertArrayHasKey('boo', $result);
     }
@@ -245,7 +245,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
      */
     public function testInsertAfterAddByKey(){
         $test = ['id' => 1, 'name' => 'John', 'age' => 20, ];
-        $result = $this->Testable->arrayInsert($test, 'name', ['lastName' => 'Smith']);
+        $result = $this->Testable->insert($test, 'name', ['lastName' => 'Smith']);
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
         $this->assertArrayHasKey('lastName', $result);
@@ -273,7 +273,7 @@ class ArrayHelperTest extends \PHPUnit_Framework_TestCase {
     public function testInsertBeforeAddByIndex() {
         $test = [1, 3, 4, 5];
         $expected = [1, 2, 3, 4, 5];
-        $result = $this->Testable->arrayInsert($test, 1, [2], 'before');
+        $result = $this->Testable->insert($test, 1, [2], 'before');
         $this->assertNotEmpty($result);
         $this->assertTrue(is_array($result));
         $this->assertEquals(5, count($result));
