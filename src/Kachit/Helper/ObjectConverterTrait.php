@@ -14,7 +14,14 @@ trait ObjectConverterTrait {
      * @return array
      */
     public function toArray() {
-        return get_object_vars($this);
+        $vars = [];
+        $excludeFields = $this->getObjectConverterExcludeFields();
+        foreach ($this as $key => $value) {
+            if (!in_array($key, $excludeFields)) {
+                $vars[$key] = ($this->checkClassParamIsObjectConverter($value)) ? $value->toArray() : $value;
+            }
+        }
+        return $vars;
     }
 
     /**
@@ -26,8 +33,29 @@ trait ObjectConverterTrait {
     public function fillFromArray(array $params) {
         $expectedParams = $this->toArray();
         foreach ($expectedParams as $key => $value) {
-            $this->$key = (array_key_exists($key, $params)) ? $params[$key] : $value;
+            if (array_key_exists($key, $params)) {
+                $this->$key = $params[$key];
+            } else {
+                $this->$key = $value;
+            }
         }
         return $this;
     }
-} 
+
+    /**
+     * Get object converter exclude fields
+     *
+     * @return array
+     */
+    protected function getObjectConverterExcludeFields() {
+        return [];
+    }
+
+    /**
+     * @param mixed $value
+     * @return bool
+     */
+    protected function checkClassParamIsObjectConverter($value) {
+        return (is_object($value) && method_exists($value, 'toArray') && method_exists($value, 'fillFromArray'));
+    }
+}

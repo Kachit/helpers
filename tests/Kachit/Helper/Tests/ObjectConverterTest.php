@@ -8,6 +8,7 @@
 namespace Kachit\Helper\Tests;
 
 use Kachit\Helper\Testable\ObjectWithConverter;
+use Kachit\Helper\Testable\AdvancedObjectWithConverter;
 
 class ObjectConverterTest extends \PHPUnit_Framework_TestCase {
 
@@ -52,6 +53,44 @@ class ObjectConverterTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('foo@bar', $this->testable->getEmail());
         $result = $this->testable->toArray();
         $this->assertArrayNotHasKey('city', $result);
+    }
+
+    /**
+     * RTFN
+     */
+    public function testToArrayAdvancedObject() {
+        $this->prepareAdvancedTestable();
+        $expected = ['id' => 1, 'name' => 'Mike', 'age' => 20, 'email' => 'foo@bar', 'friend' => ['id' => 2, 'name' => 'John', 'age' => 25, 'email' => '',]];
+        $result = $this->testable->toArray();
+        $this->assertNotEmpty($result);
+        $this->assertTrue(is_array($result));
+        $this->assertEquals($expected, $result);
+    }
+
+    public function testCheckClassParamIsObjectConverterSuccess() {
+        $this->prepareAdvancedTestable();
+        $result = $this->testable->checkClassParamIsObjectConverter($this->testable->getFriend());
+        $this->assertTrue($result);
+    }
+
+    public function testCheckClassParamIsObjectConverterFail() {
+        $this->prepareAdvancedTestable();
+        $result = $this->testable->checkClassParamIsObjectConverter($this->testable->getAge());
+        $this->assertFalse($result);
+    }
+
+    /**
+     *
+     */
+    protected function prepareAdvancedTestable() {
+        $this->testable = new AdvancedObjectWithConverter();
+        $this->testable
+            ->setId(1)
+            ->setName('Mike')
+            ->setAge(20)
+            ->setEmail('foo@bar')
+            ->getFriend()->setAge(25)->setId(2)->setName('John')
+        ;
     }
 }
  
