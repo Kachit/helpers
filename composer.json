@@ -1,11 +1,10 @@
 {
     "name": "kachit/helpers",
     "require": {
-        "php": ">=5.4.0",
-        "anahkiasen/underscore-php":"dev-master"
+        "php": ">=5.4.0"
     },
     "require-dev": {
-        "satooshi/php-coveralls": "dev-master"
+        "satooshi/php-coveralls": "~1.0"
     },
     "description": "Utils classes for arrays, strings and other",
     "version": "0.0.1",
@@ -16,8 +15,7 @@
     },
     "autoload": {
         "psr-0": {
-            "Kachit\\Helper": "src/",
-            "Kachit\\Underscore": "src/"
+            "Kachit\\Helper": "src/"
         }
     },
     "type": "library",
