@@ -7,19 +7,23 @@
  */
 namespace Kachit\Helper\Testable;
 
-class AdvancedObjectWithConverter extends ObjectWithConverter {
-
+class AdvancedObjectWithConverter extends ObjectWithConverter
+{
     /**
      * @var ObjectWithConverter
      */
     protected $friend;
 
+    /**
+     * @var
+     */
     protected $fieldForExclude;
 
     /**
      * Init
      */
-    public function __construct() {
+    public function __construct()
+    {
         $this->friend = new ObjectWithConverter();
     }
 
@@ -28,11 +32,16 @@ class AdvancedObjectWithConverter extends ObjectWithConverter {
      *
      * @return ObjectWithConverter
      */
-    public function getFriend() {
+    public function getFriend()
+    {
         return $this->friend;
     }
 
-    protected function getObjectConverterExcludeFields() {
+    /**
+     * @return array
+     */
+    protected function getObjectConverterExcludeFields()
+    {
         return ['fieldForExclude'];
     }
 
@@ -40,7 +49,8 @@ class AdvancedObjectWithConverter extends ObjectWithConverter {
      * @param mixed $value
      * @return bool
      */
-    public function checkClassParamIsObjectConverter($value) {
+    public function checkClassParamIsObjectConverter($value)
+    {
         return parent::checkClassParamIsObjectConverter($value);
     }
 } 

@@ -27,7 +27,8 @@ class JsonHelper {
      *
      * @return Decoder
      */
-    public function getDecoder() {
+    public function getDecoder()
+    {
         if (empty($this->decoder)) {
             $this->decoder = new Decoder();
         }
@@ -39,7 +40,8 @@ class JsonHelper {
      *
      * @return Encoder
      */
-    public function getEncoder() {
+    public function getEncoder()
+    {
         if (empty($this->encoder)) {
             $this->encoder = new Encoder();
         }
@@ -52,7 +54,8 @@ class JsonHelper {
      * @param mixed $value
      * @return string
      */
-    public function encode($value) {
+    public function encode($value)
+    {
         return $this->getEncoder()->encode($value);
     }
 
@@ -62,7 +65,8 @@ class JsonHelper {
      * @param string $jsonString
      * @return mixed
      */
-    public function decode($jsonString) {
+    public function decode($jsonString)
+    {
         return $this->getDecoder()->decode($jsonString);
     }
 }

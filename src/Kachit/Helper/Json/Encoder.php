@@ -31,7 +31,8 @@ class Encoder extends AbstractJson {
      * @param mixed $value
      * @return string
      */
-    public function encode($value) {
+    public function encode($value)
+    {
         $value = $this->prepareValueForEncode($value);
         $jsonString = json_encode($value, $this->generateOptions());
         $this->checkJsonErrors();
@@ -44,7 +45,8 @@ class Encoder extends AbstractJson {
      * @param bool $value
      * @return $this
      */
-    public function enableHexTag($value = true) {
+    public function enableHexTag($value = true)
+    {
         return $this->setOption(JSON_HEX_TAG, $value);
     }
 
@@ -54,7 +56,8 @@ class Encoder extends AbstractJson {
      * @param bool $value
      * @return $this
      */
-    public function enablePrettyPrint($value = true) {
+    public function enablePrettyPrint($value = true)
+    {
         return $this->setOption(JSON_PRETTY_PRINT, $value);
     }
 
@@ -64,7 +67,8 @@ class Encoder extends AbstractJson {
      * @param bool $value
      * @return $this
      */
-    public function enableBigIntAsString($value = true) {
+    public function enableBigIntAsString($value = true)
+    {
         return $this->setOption(JSON_BIGINT_AS_STRING, $value);
     }
 
@@ -74,7 +78,8 @@ class Encoder extends AbstractJson {
      * @param bool $value
      * @return $this
      */
-    public function enableUnescapedSlashes($value = true) {
+    public function enableUnescapedSlashes($value = true)
+    {
         return $this->setOption(JSON_UNESCAPED_SLASHES, $value);
     }
 
@@ -84,7 +89,8 @@ class Encoder extends AbstractJson {
      * @param bool $value
      * @return $this
      */
-    public function enableUnescapedUnicode($value = true) {
+    public function enableUnescapedUnicode($value = true)
+    {
         return $this->setOption(JSON_UNESCAPED_UNICODE, $value);
     }
 
@@ -94,7 +100,8 @@ class Encoder extends AbstractJson {
      * @param bool $value
      * @return $this
      */
-    public function enableHexAmp($value = true) {
+    public function enableHexAmp($value = true)
+    {
         return $this->setOption(JSON_HEX_AMP, $value);
     }
 
@@ -104,7 +111,8 @@ class Encoder extends AbstractJson {
      * @param bool $value
      * @return $this
      */
-    public function enableHexApos($value = true) {
+    public function enableHexApos($value = true)
+    {
         return $this->setOption(JSON_HEX_APOS, $value);
     }
 
@@ -114,7 +122,8 @@ class Encoder extends AbstractJson {
      * @param bool $value
      * @return $this
      */
-    public function enableHexQuot($value = true) {
+    public function enableHexQuot($value = true)
+    {
         return $this->setOption(JSON_HEX_QUOT, $value);
     }
 
@@ -124,7 +133,8 @@ class Encoder extends AbstractJson {
      * @param bool $value
      * @return $this
      */
-    public function enableForceObject($value = true) {
+    public function enableForceObject($value = true)
+    {
         return $this->setOption(JSON_FORCE_OBJECT, $value);
     }
 
@@ -134,7 +144,8 @@ class Encoder extends AbstractJson {
      * @param bool $value
      * @return $this
      */
-    public function enableNumericCheck($value = true) {
+    public function enableNumericCheck($value = true)
+    {
         return $this->setOption(JSON_NUMERIC_CHECK, $value);
     }
 
@@ -144,12 +155,11 @@ class Encoder extends AbstractJson {
      * @param mixed $value
      * @return array
      */
-    protected function prepareValueForEncode($value) {
+    protected function prepareValueForEncode($value)
+    {
         if (!is_array($value) || !is_object($value)) {
             $value = (array)$value;
         }
         return $value;
     }
-
-
 }

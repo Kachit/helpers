@@ -9,8 +9,8 @@ namespace Kachit\Helper\Tests;
 
 use Kachit\Helper\Testable\JsonHelper;
 
-class JsonHelperTest extends \PHPUnit_Framework_TestCase {
-
+class JsonHelperTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @var JsonHelper
      */
@@ -19,11 +19,13 @@ class JsonHelperTest extends \PHPUnit_Framework_TestCase {
     /**
      * Init
      */
-    protected function setUp() {
+    protected function setUp()
+    {
         $this->testable = new JsonHelper();
     }
 
-    public function testEncodeByDefault() {
+    public function testEncodeByDefault()
+    {
         $optionsEncode = JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE;
         $data = ['foo' => 123, 'bar' => 456, 'fi' => []];
         $jsonExpected = json_encode($data, $optionsEncode);
@@ -31,7 +33,8 @@ class JsonHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals($jsonExpected, $jsonActual);
     }
 
-    public function testEncodeWithPrettyPrint() {
+    public function testEncodeWithPrettyPrint()
+    {
         $optionsEncode = JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT;
         $data = ['foo' => 123, 'bar' => 456, 'fi' => []];
         $jsonExpected = json_encode($data, $optionsEncode);

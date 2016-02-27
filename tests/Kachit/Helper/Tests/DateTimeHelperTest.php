@@ -7,8 +7,8 @@
 namespace Kachit\Helper\Tests;
 use Kachit\Helper\DateTimeHelper;
 
-class DateTimeHelperTest extends \PHPUnit_Framework_TestCase  {
-
+class DateTimeHelperTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @var DateTimeHelper
      */
@@ -17,14 +17,13 @@ class DateTimeHelperTest extends \PHPUnit_Framework_TestCase  {
     /**
      * Set up
      */
-    protected function setUp() {
+    protected function setUp()
+    {
         $this->testable = new DateTimeHelper();
     }
 
-    /**
-     * RTFN
-     */
-    public function testGetDatesByPeriodSimple() {
+    public function testGetDatesByPeriodSimple()
+    {
         $startDate = '2014-05-05';
         $endDate = '2014-05-20';
         $result = $this->testable->getDatesListByPeriod($startDate, $endDate, 'Y-m-d');
@@ -35,10 +34,8 @@ class DateTimeHelperTest extends \PHPUnit_Framework_TestCase  {
         $this->assertEquals('2014-05-20', array_pop($result));
     }
 
-    /**
-     * RTFN
-     */
-    public function testGetDatesByPeriodWithoutFormat() {
+    public function testGetDatesByPeriodWithoutFormat()
+    {
         $startDate = strtotime('2014-05-05');
         $endDate = strtotime('2014-05-20');
         $result = $this->testable->getDatesListByPeriod($startDate, $endDate);
@@ -50,20 +47,18 @@ class DateTimeHelperTest extends \PHPUnit_Framework_TestCase  {
     }
 
     /**
-     * RTFN
      * @expectedException \Exception
      * @expectedExceptionMessage Dates interval is not valid
      */
-    public function testGetDatesByPeriodWrongInterval() {
+    public function testGetDatesByPeriodWrongInterval()
+    {
         $startDate = '2014-05-30';
         $endDate = '2014-05-20';
         $this->testable->getDatesListByPeriod($startDate, $endDate);
     }
 
-    /**
-     * RTFN
-     */
-    public function testGetDatesByPeriodWithCustomStep() {
+    public function testGetDatesByPeriodWithCustomStep()
+    {
         $startDate = '2014-05-05';
         $endDate = '2014-05-10';
         $result = $this->testable->getDatesListByPeriod($startDate, $endDate, 'Y-m-d H:i:s', DateTimeHelper::HOUR);
@@ -74,10 +69,8 @@ class DateTimeHelperTest extends \PHPUnit_Framework_TestCase  {
         $this->assertEquals('2014-05-10 00:00:00', array_pop($result));
     }
 
-    /**
-     * RTFN
-     */
-    public function testExecuteByPeriodWithUse() {
+    public function testExecuteByPeriodWithUse()
+    {
         $startDate = '2014-05-05';
         $endDate = '2014-05-20';
         $index = 0;
@@ -88,10 +81,8 @@ class DateTimeHelperTest extends \PHPUnit_Framework_TestCase  {
         $this->assertEquals(16, $index);
     }
 
-    /**
-     * RTFN
-     */
-    public function testExecuteByPeriodWithArgument() {
+    public function testExecuteByPeriodWithArgument()
+    {
         $startDate = strtotime('2014-05-05');
         $endDate = strtotime('2014-05-20');
         $data = [];

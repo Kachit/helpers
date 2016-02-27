@@ -13,8 +13,11 @@ use Kachit\Helper\DateTimeHelperTrait;
 use Kachit\Helper\DateTimeHelper;
 use Kachit\Helper\StringHelperTrait;
 use Kachit\Helper\StringHelper;
+use Kachit\Helper\JsonHelperTrait;
+use Kachit\Helper\JsonHelper;
 
-class ObjectWithHelpersTraits {
+class ObjectWithHelpersTraits
+{
 
     use ArrayHelperTrait {
         getArrayHelper as fetchArrayHelper;
@@ -25,13 +28,17 @@ class ObjectWithHelpersTraits {
     use DateTimeHelperTrait {
         getDateTimeHelper as fetchDateTimeHelper;
     }
+    use JsonHelperTrait {
+        getJsonHelper as fetchJsonHelper;
+    }
 
     /**
      * Get array helper
      *
      * @return ArrayHelper
      */
-    public function getArrayHelper() {
+    public function getArrayHelper()
+    {
         return $this->fetchArrayHelper();
     }
 
@@ -40,7 +47,8 @@ class ObjectWithHelpersTraits {
      *
      * @return StringHelper
      */
-    public function getStringHelper() {
+    public function getStringHelper()
+    {
         return $this->fetchStringHelper();
     }
 
@@ -49,7 +57,18 @@ class ObjectWithHelpersTraits {
      *
      * @return DateTimeHelper
      */
-    public function getDateTimeHelper() {
+    public function getDateTimeHelper()
+    {
         return $this->fetchDateTimeHelper();
+    }
+
+    /**
+     * Get DateTime helper
+     *
+     * @return JsonHelper
+     */
+    public function getJsonHelper()
+    {
+        return $this->fetchJsonHelper();
     }
 }

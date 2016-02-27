@@ -21,7 +21,8 @@ class AbstractJson {
      * @param bool $value
      * @return $this
      */
-    protected function setOption($key, $value) {
+    protected function setOption($key, $value)
+    {
         if (array_key_exists($key, $this->options)) {
             $this->options[$key] = (bool)$value;
         }
@@ -33,7 +34,8 @@ class AbstractJson {
      *
      * @return int
      */
-    protected function generateOptions() {
+    protected function generateOptions()
+    {
         $options = 0;
         foreach ($this->options as $option => $state) {
             if ($state) {
@@ -48,7 +50,8 @@ class AbstractJson {
      *
      * @throws \Exception
      */
-    protected function checkJsonErrors() {
+    protected function checkJsonErrors()
+    {
         if (json_last_error() !== JSON_ERROR_NONE) {
             throw new \Exception(json_last_error_msg());
         }
@@ -59,7 +62,8 @@ class AbstractJson {
      *
      * @return $this
      */
-    public function clearOptions() {
+    public function clearOptions()
+    {
         $this->options = [];
         return $this;
     }
@@ -70,7 +74,8 @@ class AbstractJson {
      * @param array $options
      * @return $this
      */
-    public function setOptions(array $options) {
+    public function setOptions(array $options)
+    {
         foreach ($options as $key) {
             $this->setOption($key, true);
         }

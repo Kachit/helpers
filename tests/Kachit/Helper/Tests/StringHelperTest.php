@@ -9,8 +9,8 @@ namespace Kachit\Helper\Tests;
 
 use Kachit\Helper\StringHelper;
 
-class StringHelperTest extends \PHPUnit_Framework_TestCase {
-
+class StringHelperTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @var StringHelper
      */
@@ -19,14 +19,13 @@ class StringHelperTest extends \PHPUnit_Framework_TestCase {
     /**
      * Init
      */
-    protected function setUp() {
+    protected function setUp()
+    {
         $this->MockObject = new StringHelper();
     }
 
-    /**
-     * RTFN
-     */
-    public function testConvertToCamelCase() {
+    public function testConvertToCamelCase()
+    {
         $table_name = 'table_name';
         $result = $this->MockObject->convertToCamelCase($table_name);
         $this->assertNotEmpty($result);
@@ -36,10 +35,8 @@ class StringHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('TableName', $result);
     }
 
-    /**
-     * RTFN
-     */
-    public function testConvertToUnderscore() {
+    public function testConvertToUnderscore()
+    {
         $test = 'StringHelperTest';
         $result = $this->MockObject->convertToUnderscore($test);
         $this->assertNotEmpty($result);
@@ -47,10 +44,8 @@ class StringHelperTest extends \PHPUnit_Framework_TestCase {
         $this->assertEquals('string_helper_test', $result);
     }
 
-    /**
-     * RTFN
-     */
-    public function testLimitWords() {
+    public function testLimitWords()
+    {
         $text = 'Apply a user function to every member of an array';
         $result = $this->MockObject->limitWords($text, 5);
         $this->assertNotEmpty($result);

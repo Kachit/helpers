@@ -31,7 +31,8 @@ class Decoder extends AbstractJson {
      * @param string $jsonString
      * @return mixed
      */
-    public function decode($jsonString) {
+    public function decode($jsonString)
+    {
         $value = json_decode($jsonString, $this->decodeAsArray, $this->decodeDepth, $this->generateOptions());
         $this->checkJsonErrors();
         return $value;
@@ -42,7 +43,8 @@ class Decoder extends AbstractJson {
      *
      * @return $this;
      */
-    public function setDecodeAsArray() {
+    public function setDecodeAsArray()
+    {
         $this->decodeAsArray = true;
         return $this;
     }
@@ -52,7 +54,8 @@ class Decoder extends AbstractJson {
      *
      * @return $this;
      */
-    public function setDecodeAsObject() {
+    public function setDecodeAsObject()
+    {
         $this->decodeAsArray = false;
         return $this;
     }
@@ -63,7 +66,8 @@ class Decoder extends AbstractJson {
      * @param int $decodeDepth
      * @return $this;
      */
-    public function setDecodeDepth($decodeDepth) {
+    public function setDecodeDepth($decodeDepth)
+    {
         $this->decodeDepth = (int)$decodeDepth;
         return $this;
     }
@@ -74,7 +78,8 @@ class Decoder extends AbstractJson {
      * @param bool $value
      * @return $this
      */
-    public function enableBigIntAsString($value = true) {
+    public function enableBigIntAsString($value = true)
+    {
         return $this->setOption(JSON_BIGINT_AS_STRING, $value);
     }
 }

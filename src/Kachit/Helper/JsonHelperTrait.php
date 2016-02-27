@@ -7,8 +7,8 @@
  */
 namespace Kachit\Helper;
 
-trait JsonHelperTrait {
-
+trait JsonHelperTrait
+{
     /**
      * @var JsonHelper
      */

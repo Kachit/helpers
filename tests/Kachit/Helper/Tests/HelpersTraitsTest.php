@@ -9,8 +9,8 @@ namespace Kachit\Helper\Tests;
 
 use Kachit\Helper\Testable\ObjectWithHelpersTraits;
 
-class HelpersTraitsTest extends \PHPUnit_Framework_TestCase {
-
+class HelpersTraitsTest extends \PHPUnit_Framework_TestCase
+{
     /**
      * @var ObjectWithHelpersTraits
      */
@@ -19,14 +19,16 @@ class HelpersTraitsTest extends \PHPUnit_Framework_TestCase {
     /**
      * Init
      */
-    protected function setUp() {
+    protected function setUp()
+    {
         $this->testable = new ObjectWithHelpersTraits();
     }
 
     /**
      * RTFN
      */
-    public function testGetArrayHelper() {
+    public function testGetArrayHelper()
+    {
         $result = $this->testable->getArrayHelper();
         $this->assertNotEmpty($result);
         $this->assertTrue(is_object($result));
@@ -36,7 +38,8 @@ class HelpersTraitsTest extends \PHPUnit_Framework_TestCase {
     /**
      * RTFN
      */
-    public function testGetStringHelper() {
+    public function testGetStringHelper()
+    {
         $result = $this->testable->getStringHelper();
         $this->assertNotEmpty($result);
         $this->assertTrue(is_object($result));
@@ -46,11 +49,23 @@ class HelpersTraitsTest extends \PHPUnit_Framework_TestCase {
     /**
      * RTFN
      */
-    public function testGetDateTimeHelper() {
+    public function testGetDateTimeHelper()
+    {
         $result = $this->testable->getDateTimeHelper();
         $this->assertNotEmpty($result);
         $this->assertTrue(is_object($result));
         $this->assertInstanceOf('Kachit\Helper\DateTimeHelper', $result);
+    }
+
+    /**
+     * RTFN
+     */
+    public function testGetJsonHelper()
+    {
+        $result = $this->testable->getJsonHelper();
+        $this->assertNotEmpty($result);
+        $this->assertTrue(is_object($result));
+        $this->assertInstanceOf('Kachit\Helper\JsonHelper', $result);
     }
 }
  
