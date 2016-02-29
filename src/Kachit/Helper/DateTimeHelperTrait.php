@@ -7,8 +7,8 @@
  */
 namespace Kachit\Helper;
 
-trait DateTimeHelperTrait {
-
+trait DateTimeHelperTrait
+{
     /**
      * @var StringHelper
      */
@@ -19,7 +19,8 @@ trait DateTimeHelperTrait {
      *
      * @return DateTimeHelper
      */
-    protected function getDateTimeHelper() {
+    protected function getDateTimeHelper()
+    {
         if(empty($this->DateTimeHelper)) {
             $this->DateTimeHelper = new DateTimeHelper();
         }

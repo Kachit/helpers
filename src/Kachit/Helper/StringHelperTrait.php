@@ -7,8 +7,8 @@
  */
 namespace Kachit\Helper;
 
-trait StringHelperTrait {
-
+trait StringHelperTrait
+{
     /**
      * @var StringHelper
      */
@@ -19,7 +19,8 @@ trait StringHelperTrait {
      *
      * @return StringHelper
      */
-    protected function getStringHelper() {
+    protected function getStringHelper()
+    {
         if(empty($this->StringHelper)) {
             $this->StringHelper = new StringHelper();
         }

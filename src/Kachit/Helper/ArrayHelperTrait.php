@@ -7,8 +7,8 @@
  */
 namespace Kachit\Helper;
 
-trait ArrayHelperTrait {
-
+trait ArrayHelperTrait
+{
     /**
      * @var ArrayHelper
      */

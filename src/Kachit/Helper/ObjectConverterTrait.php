@@ -6,14 +6,15 @@
  */
 namespace Kachit\Helper;
 
-trait ObjectConverterTrait {
-
+trait ObjectConverterTrait
+{
     /**
      * To array
      *
      * @return array
      */
-    public function toArray() {
+    public function toArray()
+    {
         $vars = [];
         $excludeFields = $this->getObjectConverterExcludeFields();
         foreach ($this as $key => $value) {
@@ -30,7 +31,8 @@ trait ObjectConverterTrait {
      * @param array $params
      * @return $this;
      */
-    public function fillFromArray(array $params) {
+    public function fillFromArray(array $params)
+    {
         $expectedParams = $this->toArray();
         foreach ($expectedParams as $key => $value) {
             if (array_key_exists($key, $params)) {
@@ -47,7 +49,8 @@ trait ObjectConverterTrait {
      *
      * @return array
      */
-    protected function getObjectConverterExcludeFields() {
+    protected function getObjectConverterExcludeFields()
+    {
         return [];
     }
 
@@ -55,7 +58,8 @@ trait ObjectConverterTrait {
      * @param mixed $value
      * @return bool
      */
-    protected function checkClassParamIsObjectConverter($value) {
+    protected function checkClassParamIsObjectConverter($value)
+    {
         return (is_object($value) && method_exists($value, 'toArray') && method_exists($value, 'fillFromArray'));
     }
 }

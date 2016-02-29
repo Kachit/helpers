@@ -7,8 +7,8 @@
  */
 namespace Kachit\Helper\Json;
 
-class AbstractJson {
-
+class AbstractJson
+{
     /**
      * @var array
      */

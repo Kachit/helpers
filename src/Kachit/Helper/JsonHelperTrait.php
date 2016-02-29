@@ -19,7 +19,8 @@ trait JsonHelperTrait
      *
      * @return JsonHelper
      */
-    protected function getJsonHelper() {
+    protected function getJsonHelper()
+    {
         if(empty($this->JsonHelper)) {
             $this->JsonHelper = new JsonHelper();
         }

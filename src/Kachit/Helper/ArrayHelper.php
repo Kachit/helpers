@@ -7,8 +7,8 @@
  */
 namespace Kachit\Helper;
 
-class ArrayHelper {
-
+class ArrayHelper
+{
     const INSERT_TYPE_AFTER = 'after';
     const INSERT_TYPE_BEFORE = 'before';
 
@@ -28,7 +28,8 @@ class ArrayHelper {
      * @param string $keyParam
      * @return array
      */
-    public function flatten(array $array, $valueParam, $keyParam = null) {
+    public function flatten(array $array, $valueParam, $keyParam = null)
+    {
         if (PHP_VERSION_ID >= 50500) {
             return array_column($array, $valueParam, $keyParam);
         }
@@ -51,7 +52,8 @@ class ArrayHelper {
      * @param array $array
      * @return bool
      */
-    public function isAssoc(array &$array) {
+    public function isAssoc(array &$array)
+    {
         $keys = array_keys($array);
         return array_keys($keys) !== $keys;
     }
@@ -62,7 +64,8 @@ class ArrayHelper {
      * @param mixed $value value to check
      * @return boolean
      */
-    public function isArray($value) {
+    public function isArray($value)
+    {
         if (is_array($value)) {
             return true;
         }
@@ -76,7 +79,8 @@ class ArrayHelper {
      * @param mixed $key
      * @return bool
      */
-    public function keyExist(array $array, $key) {
+    public function has(array $array, $key)
+    {
         return array_key_exists($key, $array);
     }
 
@@ -87,9 +91,10 @@ class ArrayHelper {
      * @param $key
      * @return bool
      */
-    public function delete(array &$array, $key) {
+    public function delete(array &$array, $key)
+    {
         $result = false;
-        if ($this->keyExist($array, $key)) {
+        if ($this->has($array, $key)) {
             unset($array[$key]);
             $result = true;
         }
@@ -103,11 +108,12 @@ class ArrayHelper {
      * @param array $keys
      * @return array
      */
-    public function extract(array $array, array $keys) {
+    public function extract(array $array, array $keys)
+    {
         $found = [];
         if($array && $keys) {
             foreach ($keys as $key) {
-                if ($this->keyExist($array, $key)) {
+                if ($this->has($array, $key)) {
                     $found[$key] = $array[$key];
                 }
             }
@@ -122,7 +128,8 @@ class ArrayHelper {
      * @param array $keys
      * @return array
      */
-    public function exclude(array $array, array $keys) {
+    public function exclude(array $array, array $keys)
+    {
         if($array && $keys) {
             foreach ($keys as $key) {
                 $this->delete($array, $key);
@@ -137,7 +144,8 @@ class ArrayHelper {
      * @param array $array
      * @return bool
      */
-    public function isMultiDimensional(array &$array) {
+    public function isMultiDimensional(array &$array)
+    {
         return (count($array) !== count($array, true));
     }
 
@@ -149,7 +157,8 @@ class ArrayHelper {
      * @param string $default
      * @return mixed
      */
-    public function getElement(array &$array, $key, $default = null) {
+    public function getElement(array &$array, $key, $default = null)
+    {
         return (array_key_exists($key, $array)) ? $array[$key] : $default;
     }
 
@@ -160,7 +169,8 @@ class ArrayHelper {
      * @param array $filter
      * @return array
      */
-    public function clear(array $array, array $filter = ['', null]) {
+    public function clear(array $array, array $filter = ['', null])
+    {
         return array_diff($array, $filter);
     }
 
@@ -173,7 +183,8 @@ class ArrayHelper {
      * @param string $position
      * @return array
      */
-    public function insert(array $array, $key, array $insert, $position = self::INSERT_TYPE_AFTER) {
+    public function insert(array $array, $key, array $insert, $position = self::INSERT_TYPE_AFTER)
+    {
         if (!in_array($position, $this->insertTypes)) {
             return false;
         }
@@ -200,7 +211,8 @@ class ArrayHelper {
      * @param array $insert
      * @return array
      */
-    public function insertAfter(array $array, $key, array $insert) {
+    public function insertAfter(array $array, $key, array $insert)
+    {
         return $this->insert($array, $key, $insert);
     }
 
@@ -212,7 +224,8 @@ class ArrayHelper {
      * @param array $insert
      * @return array
      */
-    public function insertBefore(array $array, $key, array $insert) {
+    public function insertBefore(array $array, $key, array $insert)
+    {
         return $this->insert($array, $key, $insert, self::INSERT_TYPE_BEFORE);
     }
 }

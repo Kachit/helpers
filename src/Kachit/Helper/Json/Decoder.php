@@ -6,8 +6,8 @@
  */
 namespace Kachit\Helper\Json;
 
-class Decoder extends AbstractJson {
-
+class Decoder extends AbstractJson
+{
     /**
      * @var array
      */

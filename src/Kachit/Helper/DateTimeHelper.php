@@ -7,8 +7,8 @@
  */
 namespace Kachit\Helper;
 
-class DateTimeHelper {
-
+class DateTimeHelper
+{
     // Second amounts for various time increments
     const YEAR = 31556926;
     const LEAP_YEAR = 31622400;
@@ -31,7 +31,8 @@ class DateTimeHelper {
      * @return array
      * @throws \Exception
      */
-    public function getDatesListByPeriod($startDate, $endDate, $format = null, $step = self::DAY) {
+    public function getDatesListByPeriod($startDate, $endDate, $format = null, $step = self::DAY)
+    {
         $startTimestamp = (is_int($startDate)) ? $startDate : strtotime($startDate);
         $endTimestamp = (is_int($endDate)) ? $endDate : strtotime($endDate);
         if ($startTimestamp >= $endTimestamp) {
@@ -55,7 +56,8 @@ class DateTimeHelper {
      * @param int $step
      * @throws \Exception
      */
-    public function executeByPeriod($startDate, $endDate, $function, $step = self::DAY) {
+    public function executeByPeriod($startDate, $endDate, $function, $step = self::DAY)
+    {
         $startTimestamp = (is_int($startDate)) ? $startDate : strtotime($startDate);
         $endTimestamp = (is_int($endDate)) ? $endDate : strtotime($endDate);
         if ($startTimestamp >= $endTimestamp) {

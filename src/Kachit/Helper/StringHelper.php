@@ -7,8 +7,8 @@
  */
 namespace Kachit\Helper;
 
-class StringHelper {
-
+class StringHelper
+{
     /**
      * Convert string to camelCase
      *
@@ -16,7 +16,8 @@ class StringHelper {
      * @param bool $lcfirst
      * @return string
      */
-    public function convertToCamelCase($string, $lcfirst = true) {
+    public function convertToCamelCase($string, $lcfirst = true)
+    {
         $string = str_replace(' ', '', ucwords(strtolower(preg_replace('/[-_]/', ' ', $string))));
         return ($lcfirst) ? lcfirst($string) : $string;
     }
@@ -27,7 +28,8 @@ class StringHelper {
      * @param string $word
      * @return string
      */
-    public function convertToUnderscore($word) {
+    public function convertToUnderscore($word)
+    {
         $word = trim($word);
         $word = preg_replace('/[^a-zA-Z0-9\-\_\s]/', '', $word);
         $word = preg_replace('/[\_\s\-]+/', '_', $word);
@@ -44,7 +46,8 @@ class StringHelper {
      * @param string $suffix
      * @return string
      */
-    public function limitWords($text, $limitWords = 50, $suffix = '...') {
+    public function limitWords($text, $limitWords = 50, $suffix = '...')
+    {
         $textArray = explode(' ', $text);
         $count = count($textArray);
         if ($count > $limitWords) {

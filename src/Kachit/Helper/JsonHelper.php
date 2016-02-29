@@ -10,8 +10,8 @@ namespace Kachit\Helper;
 use Kachit\Helper\Json\Encoder;
 use Kachit\Helper\Json\Decoder;
 
-class JsonHelper {
-
+class JsonHelper
+{
     /**
      * @var Decoder
      */
