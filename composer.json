@@ -8,7 +8,7 @@
     },
     "description": "Utils classes for arrays, strings and other",
     "version": "0.0.1",
-    "keywords": ["Array", "Helper", "Utils", "String", "Datetime"],
+    "keywords": ["Array", "Helpers", "Utils", "String", "Datetime"],
     "support": {
         "email": "kachit@yandex.ru",
         "source": "https://github.com/Kachit/helpers"
